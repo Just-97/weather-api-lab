@@ -1,0 +1,198 @@
+:root {
+  color-scheme: light;
+  --paper: #edf2fa;
+  --ink: #172746;
+  --muted: #4b5c7b;
+  --line: #acbbd2;
+  --blue: #243e96;
+  --lime: #d7f58a;
+  font-family: system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+h1, h2, p, dl, dd { margin: 0; }
+
+.layout {
+  width: min(1100px, 100% - 64px);
+  margin: clamp(32px, 9vh, 100px) auto 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  column-gap: clamp(32px, 6vw, 88px);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font-size: 0.83rem;
+  font-weight: 650;
+}
+
+.badge span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+h1 {
+  margin: 22px 0 18px;
+  font-size: clamp(3.5rem, 7.6vw, 6.8rem);
+  font-weight: 780;
+  line-height: 0.92;
+  letter-spacing: -0.075em;
+}
+
+.lead {
+  max-width: 30ch;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.7vw, 1.22rem);
+  line-height: 1.5;
+}
+
+.city-form {
+  max-width: 350px;
+  margin-top: 34px;
+  display: grid;
+  gap: 8px;
+}
+
+label { font-size: 0.88rem; font-weight: 700; }
+
+select, button {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 10px 14px;
+  color: var(--ink);
+  font: inherit;
+}
+
+select { background: #f9fbff; }
+
+button {
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-color: #95ac55;
+  background: var(--lime);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) { background: #c8eb73; }
+:disabled { cursor: wait; opacity: 0.7; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+.status {
+  min-height: 3em;
+  max-width: 42ch;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.status[data-error="true"] { color: #a42b32; }
+
+.weather {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 480px;
+  padding: clamp(24px, 4vw, 48px);
+  border-radius: 28px 28px 28px 5px;
+  background: var(--blue);
+  color: #f6f9ff;
+}
+
+.weather-art {
+  position: absolute;
+  z-index: -1;
+  top: -42px;
+  right: -92px;
+  width: min(100%, 460px);
+  color: #6f88ca;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.report {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.report-heading h2, .details dt { font-size: 0.88rem; color: #dce6ff; }
+.report-heading h2 { font-weight: 600; }
+#report-city { margin-top: 5px; font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 700; }
+.reading { margin-top: auto; }
+
+.temperature {
+  font-size: clamp(3.9rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.09em;
+  font-weight: 740;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.conditions { margin-top: 12px; font-size: 1.1rem; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid #8298d2;
+}
+
+.details dd { margin-top: 5px; font-size: clamp(1rem, 2vw, 1.45rem); font-weight: 650; }
+
+footer {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 20px;
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+footer a { color: inherit; text-underline-offset: 3px; }
+
+@media (max-width: 760px) {
+  .layout { width: calc(100% - 36px); margin-top: 30px; grid-template-columns: 1fr; row-gap: 12px; }
+  h1 br { display: none; }
+  h1 { font-size: clamp(2.8rem, 10.4vw, 5rem); letter-spacing: -0.055em; word-spacing: 0.06em; }
+  .city-form { margin-top: 23px; }
+  .weather { min-height: 0; }
+  .report { min-height: 290px; }
+  .weather-art { top: -36px; right: -75px; width: min(87%, 400px); }
+  .temperature { letter-spacing: -0.07em; }
+  .details dt { font-size: 0.78rem; }
+  footer { margin-top: 2px; }
+}

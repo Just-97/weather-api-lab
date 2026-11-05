@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Погода сейчас · Практикум по HTTP API</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="layout">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="badge"><span aria-hidden="true"></span> Практикум по HTTP API</p>
+      <h1 id="page-title">Погода <br>сейчас</h1>
+      <p class="lead">Выберите город и получите текущую погоду из Open‑Meteo.</p>
+
+      <form id="weather-form" class="city-form">
+        <label for="city">Город</label>
+        <select id="city" name="city">
+          <option value="minsk">Минск</option>
+          <option value="brest">Брест</option>
+          <option value="warsaw">Варшава</option>
+          <option value="tbilisi">Тбилиси</option>
+        </select>
+        <button id="load-weather" type="submit">Показать погоду <span aria-hidden="true">↗</span></button>
+      </form>
+      <p id="status" class="status" role="status">Нажмите кнопку, чтобы загрузить сводку.</p>
+    </section>
+
+    <section class="weather" aria-labelledby="report-title">
+      <svg class="weather-art" viewBox="0 0 440 440" fill="none" aria-hidden="true">
+        <g stroke="currentColor">
+          <ellipse cx="274" cy="167" rx="84" ry="62" transform="rotate(-33 274 167)"/>
+          <ellipse cx="274" cy="167" rx="108" ry="83" transform="rotate(-33 274 167)"/>
+          <ellipse cx="274" cy="167" rx="132" ry="103" transform="rotate(-33 274 167)"/>
+          <ellipse cx="274" cy="167" rx="159" ry="125" transform="rotate(-33 274 167)"/>
+          <ellipse cx="274" cy="167" rx="188" ry="147" transform="rotate(-33 274 167)"/>
+          <ellipse cx="274" cy="167" rx="222" ry="171" transform="rotate(-33 274 167)"/>
+        </g>
+        <circle cx="274" cy="167" r="25" fill="#d7f58a"/>
+        <path d="M272 141v52m-24-26h52" stroke="#182d69" stroke-opacity=".25"/>
+      </svg>
+
+      <div class="report">
+        <div class="report-heading">
+          <h2 id="report-title">Текущие условия</h2>
+          <p id="report-city">Город пока не загружен</p>
+        </div>
+        <div class="reading">
+          <p class="temperature"><span class="visually-hidden">Температура: </span><span id="temperature">—</span></p>
+          <p id="conditions" class="conditions">Ожидаем данные</p>
+        </div>
+        <dl class="details">
+          <div><dt>Влажность</dt><dd id="humidity">—</dd></div>
+          <div><dt>Ветер</dt><dd id="wind">—</dd></div>
+          <div><dt>Местное время</dt><dd id="local-time">—</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <footer>
+      <p>Источник: <a href="https://open-meteo.com/">Open‑Meteo</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+      <p>Время показано без даты, коды погоды заменены словами.</p>
+    </footer>
+  </main>
+</body>
+</html>
