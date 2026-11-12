@@ -1,0 +1,23 @@
+{
+  "name": "Weather API Lab",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "postAttachCommand": {
+    "server": "node .devcontainer/server.mjs"
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Погода сейчас",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "README.md",
+        "app.js",
+        "index.html"
+      ]
+    }
+  }
+}
